@@ -10,26 +10,26 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controllers.LogInFormController">
+<AnchorPane fx:id="root" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controllers.LogInFormController">
    <children>
       <ImageView fitHeight="1024.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../assets/Log_in.png" />
          </image>
       </ImageView>
-      <Line fx:id="pwLine" endX="334.1544189453125" endY="1.32598876953125" layoutX="946.0" layoutY="667.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="845.5" AnchorPane.topAnchor="667.8259887695312" />
-      <Line fx:id="usrNameLine" endX="334.1544189453125" endY="1.32598876953125" layoutX="953.0" layoutY="557.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="852.5" AnchorPane.topAnchor="557.8259887695312" />
-      <TextField fx:id="userNameTxt" layoutX="891.0" layoutY="512.0" onAction="#userNameTxtOnAction" prefHeight="45.0" prefWidth="396.0" promptText="User Name" style="-fx-background-color: tranceparent;">
+      <Line fx:id="pwLine" endX="334.1544189453125" endY="1.32598876953125" layoutX="946.0" layoutY="653.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="845.5" AnchorPane.topAnchor="653.8259887695312" />
+      <Line fx:id="usrNameLine" endX="334.1544189453125" endY="1.32598876953125" layoutX="953.0" layoutY="527.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="852.5" AnchorPane.topAnchor="527.8259887695312" />
+      <TextField fx:id="userNameTxt" layoutX="891.0" layoutY="482.0" onAction="#userNameTxtOnAction" prefHeight="45.0" prefWidth="396.0" promptText="Username" style="-fx-background-color: tranceparent;">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="pwTxt" layoutX="884.0" layoutY="622.0" onAction="#pwTxtOnAction" prefHeight="45.0" prefWidth="345.0" promptText="Password" style="-fx-background-color: tranceparent;">
+      <PasswordField fx:id="pwTxt" layoutX="885.0" layoutY="608.0" onAction="#pwTxtOnAction" prefHeight="45.0" prefWidth="345.0" promptText="Password" style="-fx-background-color: tranceparent;">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </PasswordField>
-      <Button fx:id="pwViewBtn" layoutX="1230.0" layoutY="622.0" mnemonicParsing="false" onAction="#pwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
+      <Button fx:id="pwViewBtn" layoutX="1224.0" layoutY="608.0" mnemonicParsing="false" onAction="#pwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
          <graphic>
             <ImageView fx:id="viewImg" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -38,15 +38,24 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="signUpBtn" layoutX="1032.0" layoutY="799.0" mnemonicParsing="false" onAction="#signUpBtnOnAction" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css" text="Sign up" textFill="#090963">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
       <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="824.0" layoutY="465.0" onAction="#loginBtnOnAction" prefHeight="53.0" prefWidth="434.01" stylesheets="@../styles/style.css" text="SIGN IN" textFill="WHITE" AnchorPane.leftAnchor="853.0" AnchorPane.topAnchor="691.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="845.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/account.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="37.0" layoutX="845.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/key.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="signUpBtn" buttonType="RAISED" layoutX="1002.0" layoutY="798.0" onAction="#signUpBtnOnAction" style="-fx-background-color: transparent;" text="SIGN UP" textFill="#5d5e1e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

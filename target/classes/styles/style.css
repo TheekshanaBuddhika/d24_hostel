@@ -16,3 +16,7 @@
 .button:pressed {
     -fx-background-color: #f7ede2;
 }
+
+.text-field {
+    -fx-prompt-text-fill: white;
+}

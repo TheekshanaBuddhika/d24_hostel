@@ -38,15 +38,24 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="signUpBtn" layoutX="1032.0" layoutY="799.0" mnemonicParsing="false" onAction="#signUpBtnOnAction" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css" text="Sign up" textFill="#090963">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
       <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="824.0" layoutY="465.0" onAction="#loginBtnOnAction" prefHeight="53.0" prefWidth="434.01" stylesheets="@../styles/style.css" text="SIGN IN" textFill="WHITE" AnchorPane.leftAnchor="853.0" AnchorPane.topAnchor="691.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="845.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/account.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="37.0" layoutX="845.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/key.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="signUpBtn" buttonType="RAISED" layoutX="1002.0" layoutY="798.0" onAction="#signUpBtnOnAction" style="-fx-background-color: transparent;" text="SIGN UP" textFill="#5d5e1e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

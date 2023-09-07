@@ -29,7 +29,7 @@ public class Navigation {
                 break;
             case STUDENT : initUi("stdForm.fxml");
                 break;
-            case RESERVATION : initUi("reservationForm.fxml");
+            case RESERVATION : initUi("reservationForm.fxml.fxml");
                 break;
 
         }
