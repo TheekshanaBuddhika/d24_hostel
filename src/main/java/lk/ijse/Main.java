@@ -11,10 +11,9 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/views/logInForm.fxml")));
         stage.setScene(scene);
-        stage.setTitle("D-24");
+        stage.setTitle("D24 Hostel");
         stage.getIcons().add(new Image("/assets/d23_logo.png"));
         stage.centerOnScreen();
-//        stage.setResizable(false);
         stage.show();
     }
 }
