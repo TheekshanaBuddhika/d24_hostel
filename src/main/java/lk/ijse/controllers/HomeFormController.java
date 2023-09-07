@@ -16,14 +16,15 @@ public class HomeFormController {
     void setingBtn(ActionEvent event) {
         try {
             switch (round) {
-                case 0 -> {
+                case 0:
                     Navigation.navigation(Rout.SETTINGS, setingPane);
                     round = 1;
-                }
-                case 1 -> {
+                    break;
+
+                case 1:
                     setingPane.getChildren().clear();
                     round = 0;
-                }
+                    break;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
