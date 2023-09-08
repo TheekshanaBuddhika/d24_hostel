@@ -1,6 +1,7 @@
 package lk.ijse.controllers.util;
 
 import animatefx.animation.Shake;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -27,6 +28,33 @@ public class Validation {
         }
         return false;
     }
+    public static boolean cNumValidation(TextField txt, Line line) {
+        if (txt.getText().matches("[0-9+]+")) {
+            defaultLine(line);
+            return true;
+        } else {
+            shakeLine(line);
+        }
+        return false;
+    }
+    public static boolean numberValidation(TextField txt, Line line) {
+        if (txt.getText().matches("[0-9]+")) {
+            defaultLine(line);
+            return true;
+        } else {
+            shakeLine(line);
+        }
+        return false;
+    }
+    public static boolean moneyValidation(TextField txt, Line line) {
+        if (txt.getText().matches("\\d+(\\.\\d{1,2})?")) {
+            defaultLine(line);
+            return true;
+        } else {
+            shakeLine(line);
+        }
+        return false;
+    }
     public static void shakeLine(Line line){
         line.setStroke(Color.RED);
         shake=new Shake(line);
@@ -47,7 +75,14 @@ public class Validation {
         }
         return false;
     }
-
+    public static boolean comboValidation(ComboBox<String> idCmb) {
+        if (idCmb.getValue() == null){
+            shakeCmb(idCmb);
+        }else {
+            return true;
+        }
+        return false;
+    }
     private static void shakeDate(DatePicker date) {
         date.setStyle(
                 "-fx-border-color: red; " +
@@ -66,6 +101,25 @@ public class Validation {
         date.setStyle(
                 "-fx-background-color:tranceparent; " +
                         "-fx-text-fill: white"
+        );
+    }
+    private static void shakeCmb(ComboBox<String> idCmb) {
+        idCmb.setStyle(
+                "-fx-border-color: red; " +
+                        "-fx-border-width: 2px ;" +
+                        "-fx-background-color: tranceparent ;"
+        );
+        shake=new Shake(idCmb);
+        shake.setOnFinished(actionEvent -> {
+            defueltDate(idCmb);
+        });
+        shake.play();
+    }
+    private static void defueltDate(ComboBox<String> idCmb) {
+        idCmb.setStyle(
+                "-fx-background-color:tranceparent; "+
+                        "-fx-border-color: black; "+
+                        "-fx-border-width: 2px ;"
         );
     }
 }

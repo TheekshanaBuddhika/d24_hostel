@@ -2,6 +2,7 @@ package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.ReservationBO;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.dao.custom.QueryDAO;
 import lk.ijse.dao.custom.ReservationDAO;
 import lk.ijse.dao.custom.RoomDAO;
 import lk.ijse.dao.custom.StudentDAO;
@@ -20,10 +21,11 @@ public class ReservationBOImpl implements ReservationBO {
     RoomDAO roomDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ROOM);
     StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STUDENT);
     ReservationDAO reservationDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.RESERVATION);
-
+    QueryDAO queryDAO=DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.QUERY);
     @Override
     public List<ReservationDTO> getAllReservation() {
-        return null;
+        List<ReservationDTO> reservationDTOS = queryDAO.getAllReservation();
+        return reservationDTOS;
     }
 
     @Override
@@ -78,10 +80,30 @@ public class ReservationBOImpl implements ReservationBO {
                     reservationDTO.getResId(),
                     reservationDTO.getDate(),
                     reservationDTO.getSts(),
-                    room,
-                    student
+                    student,
+                    room
             ));
         }
         return false;
+    }
+
+    @Override
+    public boolean updateRes(ReservationDTO reservationDTO) {
+        Reservation reservation=reservationDAO.getItem(reservationDTO.getResId());
+        reservation.setStatus(reservationDTO.getSts());
+        reservation.setDate(reservationDTO.getDate());
+        return reservationDAO.update(reservation);
+    }
+
+    @Override
+    public boolean deleteRes(String text) {
+        return reservationDAO.delete(text);
+    }
+
+    @Override
+    public String getNextId() {
+        String id = reservationDAO.getNextId();
+        Integer newId = Integer.parseInt(id.replace("RES", "")) + 1;
+        return String.format("RES%03d", newId);
     }
 }
