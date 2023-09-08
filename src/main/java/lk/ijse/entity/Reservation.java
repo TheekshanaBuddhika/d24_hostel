@@ -20,11 +20,12 @@ public class Reservation {
     @Column(name = "res_status")
     private String status;
     @ManyToOne
-    @JoinColumn(name = "student_type_id",
-            referencedColumnName = "student_id")
-    private Student student;
-    @ManyToOne
     @JoinColumn(name = "room_id",
             referencedColumnName = "room_id")
     private Room room;
+    @ManyToOne
+    @JoinColumn(name = "student_type_id",
+            referencedColumnName = "student_id")
+    private Student student;
+
 }

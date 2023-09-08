@@ -78,8 +78,8 @@ public class ReservationBOImpl implements ReservationBO {
                     reservationDTO.getResId(),
                     reservationDTO.getDate(),
                     reservationDTO.getSts(),
-                    student,
-                    room
+                    room,
+                    student
             ));
         }
         return false;

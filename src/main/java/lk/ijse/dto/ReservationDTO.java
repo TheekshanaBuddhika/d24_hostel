@@ -15,6 +15,5 @@ public class ReservationDTO {
     private String stdNameTxt;
     private String roomType;
     private String keyMoney;
-
 }
 
