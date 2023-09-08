@@ -1,5 +1,6 @@
 package lk.ijse.dto.tm;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,3 +12,4 @@ public class RoomTM {
     private int qty;
     private String keyMoney;
 }
+

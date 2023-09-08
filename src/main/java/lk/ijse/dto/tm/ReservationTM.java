@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.sql.Date;
-
 @Data
 @AllArgsConstructor
 public class ReservationTM {
@@ -17,4 +16,5 @@ public class ReservationTM {
     private Date date;
     private String keyMoney;
     private String sts;
+    private Date exDate;
 }

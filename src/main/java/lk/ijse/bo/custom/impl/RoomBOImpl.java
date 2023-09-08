@@ -9,6 +9,7 @@ import lk.ijse.entity.Room;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RoomBOImpl implements RoomBO {
     RoomDAO roomDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ROOM);
 

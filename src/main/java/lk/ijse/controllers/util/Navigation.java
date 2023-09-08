@@ -15,21 +15,36 @@ public class Navigation {
         Stage window = (Stage) Navigation.root.getScene().getWindow();
         switch (rout) {
 
-            case LOGIN : initUi("logInForm.fxml");
+            case LOGIN :
+                initUi("logInForm.fxml");
                 break;
-            case SIGN_UP : initUi("signUpForm.fxml");
+
+            case SIGN_UP :
+                initUi("signUpForm.fxml");
                 break;
-            case DASH_BOARD :  initUi("dashBoardForm.fxml");
+
+            case DASH_BOARD :
+                initUi("dashBoardForm.fxml");
                 break;
-            case HOME : initUi("homeForm.fxml");
+
+            case HOME :
+                initUi("homeForm.fxml");
                 break;
-            case SETTINGS : initUi("settingsForm.fxml");
+
+            case SETTINGS :
+                initUi("settingsForm.fxml");
                 break;
-            case ROOMS :   initUi("roomForm.fxml");
+
+            case ROOMS :
+                initUi("roomForm.fxml");
                 break;
-            case STUDENT : initUi("stdForm.fxml");
+
+            case STUDENT :
+                initUi("stdForm.fxml");
                 break;
-            case RESERVATION : initUi("reservationForm.fxml.fxml");
+
+            case RESERVATION :
+                initUi("reservationForm.fxml");
                 break;
 
         }
