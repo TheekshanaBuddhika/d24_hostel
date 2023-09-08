@@ -17,4 +17,5 @@ public class ReservationTM {
     private String keyMoney;
     private String sts;
     private Date exDate;
+
 }
