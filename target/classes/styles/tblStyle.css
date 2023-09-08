@@ -24,10 +24,7 @@
 }
 
 /* Change the row color when a row is selected to #85B7FF */
-.table-view .table-row-cell:selected {
+.table-view .table-row-cell:selected{
     -fx-background-color: #fff3c0;
 }
 
-.table-view .table-row-cell:hover {
-    -fx-background-color: #ffffff;
-}

@@ -6,56 +6,67 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controllers.ReservationFormController">
+<AnchorPane prefHeight="1024.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controllers.ReservationFormController">
    <children>
       <ImageView fitHeight="1024.0" fitWidth="1095.0" layoutX="44.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../assets/reservation.png" />
          </image>
       </ImageView>
-      <TextField fx:id="searchTxt" layoutX="659.0" layoutY="58.0" onAction="#searchTxtOnAction" prefHeight="45.0" prefWidth="368.0" style="-fx-background-color: tranceparent;">
+      <TextField fx:id="searchTxt" layoutX="705.0" layoutY="209.0" onAction="#searchTxtOnAction" prefHeight="51.0" prefWidth="311.0" promptText="Reservation ID" style="-fx-background-color: #E6E6E6; -fx-background-radius: 30 30 30 30;">
          <font>
             <Font size="24.0" />
          </font>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX">
+               <color>
+                  <Color opacity="0.6058394312858582" />
+               </color>
+            </DropShadow>
+         </effect>
       </TextField>
-      <Button fx:id="searchBtn" layoutX="606.0" layoutY="58.0" mnemonicParsing="false" onAction="#searchBtnOnAction" prefHeight="45.0" prefWidth="53.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
+      <Button fx:id="searchBtn" layoutX="961.0" layoutY="211.0" mnemonicParsing="false" onAction="#searchBtnOnAction" prefHeight="45.0" prefWidth="53.0" style="-fx-background-color: #D0CFCF; -fx-background-radius: 30 30 30 30;" stylesheets="@../styles/search.css">
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/search-interface-symbol%201.png" />
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX">
+               <color>
+                  <Color opacity="0.7627737522125244" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
-      <DatePicker fx:id="dtPicketr" layoutX="727.0" layoutY="187.0" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: tranceparent;" AnchorPane.rightAnchor="68.572" />
-      <TextField fx:id="roomIdTxt" layoutX="504.0" layoutY="239.0" onAction="#roomIdTxtOnAction" prefHeight="45.0" prefWidth="143.0" style="-fx-background-color: tranceparent;">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <Text fx:id="stNameTxt" layoutX="245.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <DatePicker fx:id="dtPicketr" layoutX="795.0" layoutY="395.0" prefHeight="39.0" prefWidth="216.0" style="-fx-background-color: tranceparent;" AnchorPane.rightAnchor="84.0" />
+      <Text fx:id="stNameTxt" layoutX="272.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="rmTypeTxt" layoutX="764.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="rmTypeTxt" layoutX="567.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="kMnyTxt" layoutX="210.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="kMnyTxt" layoutX="255.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TableView fx:id="resTbl" layoutX="79.0" layoutY="514.0" prefHeight="444.0" prefWidth="959.0" stylesheets="@../styles/tblStyle.css">
+      <TableView fx:id="resTbl" layoutX="79.0" layoutY="547.0" prefHeight="444.0" prefWidth="959.0" stylesheets="@../styles/tblStyle.css">
          <columns>
             <TableColumn fx:id="reIdColm" minWidth="0.0" prefWidth="100.0" text="Reservation ID" />
             <TableColumn fx:id="stIdColm" prefWidth="100.0" text="Student ID" />
@@ -67,18 +78,72 @@
             <TableColumn fx:id="stsColm" prefWidth="107.0" text="Status" />
          </columns>
       </TableView>
-      <ComboBox fx:id="stsCmb" layoutX="803.0" layoutY="266.0" prefHeight="25.0" prefWidth="222.0" />
-      <Line fx:id="idLine" endX="22.0" layoutX="232.0" layoutY="212.0" scaleY="2.0" startX="-120.0" />
-      <TextField fx:id="idTxt" layoutX="112.0" layoutY="165.0" prefHeight="45.0" prefWidth="143.0" style="-fx-background-color: tranceparent;">
+      <ComboBox id="cmb" fx:id="stsCmb" layoutX="794.0" layoutY="319.0" prefHeight="39.0" prefWidth="150.0" stylesheets="@../styles/cmbStyle.css" />
+      <Line fx:id="idLine" endX="22.0" layoutX="445.0" layoutY="256.0" scaleY="2.0" startX="-120.0" />
+      <TextField fx:id="idTxt" layoutX="324.0" layoutY="207.0" prefHeight="45.0" prefWidth="143.0" style="-fx-background-color: tranceparent;">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <Button fx:id="deleteBtn" layoutX="938.0" layoutY="454.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="37.0" prefWidth="100.0" stylesheets="@../styles/style.css" text="Delete" />
-      <Button fx:id="upBtn" layoutX="829.0" layoutY="454.0" mnemonicParsing="false" onAction="#upBtnOnAction" prefHeight="29.0" prefWidth="100.0" stylesheets="@../styles/style.css" text="Update" />
-      <Button fx:id="svBtn" layoutX="720.0" layoutY="454.0" mnemonicParsing="false" onAction="#svBtnOnAction" prefHeight="29.0" prefWidth="100.0" stylesheets="@../styles/style.css" text="Save" />
-      <Button fx:id="addBtn" layoutX="658.0" layoutY="454.0" mnemonicParsing="false" onAction="#addNewBtnOnAction" prefHeight="37.0" prefWidth="53.0" stylesheets="@../styles/style.css" text="+" />
-      <ComboBox fx:id="rmIdCmb" layoutX="494.0" layoutY="266.0" onAction="#rmIdCmbOnAction" prefHeight="25.0" prefWidth="200.0" />
-      <ComboBox fx:id="idCmb" layoutX="197.0" layoutY="266.0" onAction="#idCmbOnAction" prefHeight="25.0" prefWidth="173.0" />
+      <Button fx:id="deleteBtn" layoutX="934.0" layoutY="489.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="37.0" prefWidth="100.0" stylesheets="@../styles/style.css" text="Delete" />
+      <Button fx:id="upBtn" layoutX="825.0" layoutY="489.0" mnemonicParsing="false" onAction="#upBtnOnAction" prefHeight="29.0" prefWidth="100.0" stylesheets="@../styles/style.css" text="Update" />
+      <Button fx:id="svBtn" layoutX="716.0" layoutY="489.0" mnemonicParsing="false" onAction="#svBtnOnAction" prefHeight="29.0" prefWidth="100.0" stylesheets="@../styles/style.css" text="Save" />
+      <Button fx:id="addBtn" contentDisplay="GRAPHIC_ONLY" layoutX="79.0" layoutY="211.0" mnemonicParsing="false" onAction="#addNewBtnOnAction" prefHeight="2.0" prefWidth="53.0" stylesheets="@../styles/style.css" text="+">
+         <graphic>
+            <ImageView fitHeight="72.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/social.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX">
+               <color>
+                  <Color opacity="0.7554744482040405" />
+               </color>
+            </DropShadow>
+         </effect></Button>
+      <ComboBox id="cmb" fx:id="rmIdCmb" layoutX="507.0" layoutY="319.0" onAction="#rmIdCmbOnAction" prefHeight="39.0" prefWidth="150.0" stylesheets="@../styles/cmbStyle.css" />
+      <ComboBox id="cmb" fx:id="idCmb" layoutX="225.0" layoutY="318.0" onAction="#idCmbOnAction" prefHeight="39.0" prefWidth="150.0" stylesheets="@../styles/cmbStyle.css" />
+      <Text layoutX="188.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation ID :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="123.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="422.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room ID :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="724.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="739.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="125.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="446.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="127.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

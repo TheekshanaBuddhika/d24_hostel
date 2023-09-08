@@ -1,0 +1,7 @@
+#cmb{
+    -fx-background-color:tranceparent;
+    -fx-border-color: rgb(161, 135, 0);
+    -fx-border-width: 2px ;
+    -fx-background-radius: 30 30 30 30;
+    -fx-border-radius: 30 30 30 30;
+}
