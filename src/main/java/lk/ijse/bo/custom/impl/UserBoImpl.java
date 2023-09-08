@@ -21,4 +21,12 @@ public class UserBoImpl implements UserBo {
         User user= userDAO.getItem(userDTO.getUserName());
         return user != null;
     }
+
+    @Override
+    public boolean uptdUsr(UserDTO userDTO) {
+        return userDAO.update(new User(
+                userDTO.getUserName(),
+                userDTO.getPassword()
+        ));
+    }
 }
