@@ -10,6 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="740.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controllers.SettingsFormController">
    <children>
@@ -18,46 +19,32 @@
             <Image url="@../assets/settings%20(2).png" />
          </image>
       </ImageView>
-      <Line fx:id="oldPwLine" endX="265.0" layoutX="194.0" layoutY="321.0" startX="-89.0" />
-      <TextField fx:id="oldPwTxt" layoutX="145.0" layoutY="270.0" onAction="#oldPwTxtOnAction" prefHeight="51.0" prefWidth="314.0" promptText="Username" style="-fx-background-color: tranceparent;" stylesheets="@../styles/style.css">
+      <Line fx:id="oldPwLine" endX="277.0" layoutX="154.0" layoutY="320.0" startX="-6.0" />
+      <TextField fx:id="oldPwTxt" layoutX="148.0" layoutY="269.0" onAction="#oldPwTxtOnAction" prefHeight="51.0" prefWidth="283.0" promptText="Current Password" style="-fx-background-color: tranceparent;" stylesheets="@../styles/style.css">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <Button layoutX="187.0" layoutY="598.0" mnemonicParsing="false" onAction="#svBtnOAction" prefHeight="29.0" prefWidth="150.0" stylesheets="@../styles/style.css" text="Save">
+      <Button fx:id="svBtn" layoutX="187.0" layoutY="566.0" mnemonicParsing="false" onAction="#svBtnOAction" prefHeight="29.0" prefWidth="150.0" stylesheets="@../styles/style.css" text="Save">
          <font>
             <Font size="22.0" />
          </font>
          <effect>
             <DropShadow blurType="ONE_PASS_BOX">
                <color>
-                  <Color opacity="0.8175182342529297" />
+                  <Color opacity="0.7481752038002014" />
                </color>
             </DropShadow>
          </effect>
       </Button>
-      <Line fx:id="pwLine" endX="253.0" endY="1.32598876953125" layoutX="206.0" layoutY="431.0" startX="-100.0" startY="1.32598876953125" />
-      <PasswordField fx:id="pwTxt" layoutX="145.0" layoutY="388.0" onAction="#pwTxtOnAction" prefHeight="45.0" prefWidth="283.0" promptText="Password" style="-fx-background-color: tranceparent;" stylesheets="@../styles/style.css">
+      <Line fx:id="pwLine" endX="265.0" endY="1.32598876953125" layoutX="205.0" layoutY="431.0" startX="-100.0" startY="1.32598876953125" />
+      <Line fx:id="newPwLine" endX="271.5" endY="1.32598876953125" layoutX="199.0" layoutY="537.0" startX="-91.5" startY="1.32598876953125" />
+      <PasswordField fx:id="reEntrPw" layoutX="145.0" layoutY="492.0" onAction="#reEntrPwOnAction" prefHeight="45.0" prefWidth="270.0" promptText="Re-Enter Password" style="-fx-background-color: tranceparent;" stylesheets="@../styles/style.css">
          <font>
             <Font size="21.0" />
          </font>
       </PasswordField>
-      <Button fx:id="pwViewBtn" layoutX="434.0" layoutY="388.0" mnemonicParsing="false" onAction="#pwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
-         <graphic>
-            <ImageView fx:id="viewImg" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/hide.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Line fx:id="newPwLine" endX="287.0" endY="1.32598876953125" layoutX="175.0" layoutY="540.0" startX="-63.0" startY="1.32598876953125" />
-      <PasswordField fx:id="newPwTxt" layoutX="145.0" layoutY="495.0" onAction="#newPwTxtOnAction" prefHeight="45.0" prefWidth="283.0" promptText="Re-enter Password" style="-fx-background-color: tranceparent;" stylesheets="@../styles/style.css">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </PasswordField>
-      <Button fx:id="newPwViewBtn" layoutX="433.0" layoutY="495.0" mnemonicParsing="false" onAction="#newPwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
+      <Button fx:id="rPwViewBtn" layoutX="416.0" layoutY="493.0" mnemonicParsing="false" onAction="#rPwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
          <graphic>
             <ImageView fx:id="viewImg1" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,5 +53,41 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="checkBtn" contentDisplay="GRAPHIC_ONLY" layoutX="438.0" layoutY="267.0" mnemonicParsing="false" onAction="#checkBtnOnActon" prefHeight="40.0" prefWidth="40.0" stylesheets="@../styles/style.css">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/search-interface-symbol%201.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX">
+               <color>
+                  <Color opacity="0.6569343209266663" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <PasswordField fx:id="newPwTxt" layoutX="146.0" layoutY="387.0" onAction="#newPwTxtOnAction" prefHeight="45.0" prefWidth="270.0" promptText="Password" style="-fx-background-color: tranceparent;" stylesheets="@../styles/style.css">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="newPwViewBtn" layoutX="412.0" layoutY="386.0" mnemonicParsing="false" onAction="#newPwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
+         <graphic>
+            <ImageView fx:id="viewImg11" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/hide.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text layoutX="97.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Password" />
+      <Text layoutX="98.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password" />
+      <Text layoutX="98.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-Enter Password" />
    </children>
 </AnchorPane>
