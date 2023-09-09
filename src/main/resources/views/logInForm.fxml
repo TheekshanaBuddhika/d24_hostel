@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,27 +18,18 @@
             <Image url="@../assets/Log_in.png" />
          </image>
       </ImageView>
-      <Line fx:id="pwLine" endX="334.1544189453125" endY="1.32598876953125" layoutX="946.0" layoutY="653.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="845.5" AnchorPane.topAnchor="653.8259887695312" />
+      <Line fx:id="pwLine" endX="337.5" endY="1.32598876953125" layoutX="946.0" layoutY="653.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="845.5" AnchorPane.topAnchor="653.8259887695312" />
       <Line fx:id="usrNameLine" endX="334.1544189453125" endY="1.32598876953125" layoutX="953.0" layoutY="527.0" scaleY="2.0" startX="-100.0" startY="1.32598876953125" AnchorPane.leftAnchor="852.5" AnchorPane.topAnchor="527.8259887695312" />
-      <TextField fx:id="userNameTxt" layoutX="891.0" layoutY="482.0" onAction="#userNameTxtOnAction" prefHeight="45.0" prefWidth="396.0" promptText="Username" style="-fx-background-color: tranceparent;">
+      <TextField fx:id="userNameTxt" layoutX="896.0" layoutY="482.0" onAction="#userNameTxtOnAction" prefHeight="45.0" prefWidth="391.0" promptText="Username" style="-fx-background-color: #D9D9D9; -fx-background-radius: 10 10 0 0;">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="pwTxt" layoutX="885.0" layoutY="608.0" onAction="#pwTxtOnAction" prefHeight="45.0" prefWidth="345.0" promptText="Password" style="-fx-background-color: tranceparent;">
+      <PasswordField fx:id="pwTxt" layoutX="895.0" layoutY="608.0" onAction="#pwTxtOnAction" onKeyTyped="#pwtyped" prefHeight="45.0" prefWidth="332.0" promptText="Password" style="-fx-background-color: #D9D9D9; -fx-background-radius: 10 0 0 0;">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </PasswordField>
-      <Button fx:id="pwViewBtn" layoutX="1224.0" layoutY="608.0" mnemonicParsing="false" onAction="#pwViewBtnOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: tranceparent;" stylesheets="@../styles/search.css">
-         <graphic>
-            <ImageView fx:id="viewImg" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/hide.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="824.0" layoutY="465.0" onAction="#loginBtnOnAction" prefHeight="53.0" prefWidth="434.01" stylesheets="@../styles/style.css" text="SIGN IN" textFill="WHITE" AnchorPane.leftAnchor="853.0" AnchorPane.topAnchor="691.0">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -57,5 +49,19 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></JFXButton>
+      <Label fx:id="hidelbl" layoutX="910.0" layoutY="615.0" style="-fx-background-color: #D9D9D9;">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <ToggleButton fx:id="pwViewBtn" contentDisplay="GRAPHIC_ONLY" layoutX="1227.0" layoutY="607.0" mnemonicParsing="false" onAction="#pwViewBtnOnAction" style="-fx-background-color: #D9D9D9; -fx-background-radius: 0 10 0 0;" text="ToggleButton">
+         <graphic>
+            <ImageView fx:id="viewImg" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/hide.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
    </children>
 </AnchorPane>

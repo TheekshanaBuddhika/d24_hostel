@@ -1,11 +1,13 @@
 package lk.ijse.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import lk.ijse.bo.BoFactory;
@@ -16,14 +18,16 @@ import lk.ijse.controllers.util.Validation;
 import lk.ijse.dto.UserDTO;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LogInFormController {
+public class LogInFormController implements Initializable {
+
     @FXML
-    private AnchorPane root;
+    private Label hidelbl;
+
     @FXML
-    private ImageView viewImg;
-    @FXML
-    private Button loginBtn;
+    private JFXButton loginBtn;
 
     @FXML
     private Line pwLine;
@@ -32,16 +36,24 @@ public class LogInFormController {
     private PasswordField pwTxt;
 
     @FXML
-    private Button pwViewBtn;
+    private ToggleButton pwViewBtn;
 
     @FXML
-    private Button signUpBtn;
+    private AnchorPane root;
+
+    @FXML
+    private JFXButton signUpBtn;
 
     @FXML
     private TextField userNameTxt;
 
     @FXML
     private Line usrNameLine;
+
+    @FXML
+    private ImageView viewImg;
+
+
     private final UserBo userBo = BoFactory.getInstance().getBo(BoFactory.BOTypes.USER);
     boolean pw, usr;
     public static String Gl0bUsrName;
@@ -74,9 +86,7 @@ public class LogInFormController {
         loginBtn.fire();
     }
 
-    @FXML
-    void pwViewBtnOnAction(ActionEvent event) {
-    }
+
 
     @FXML
     void signUpBtnOnAction(ActionEvent event)  {
@@ -87,9 +97,27 @@ public class LogInFormController {
         }
     }
 
+
     @FXML
     void userNameTxtOnAction(ActionEvent event) {
         pwTxt.requestFocus();
+    }
+
+    @FXML
+    void pwViewBtnOnAction(ActionEvent event) {
+
+        if(pwViewBtn.isSelected()){
+            hidelbl.setVisible(true);
+            hidelbl.textProperty().bind(Bindings.concat(pwTxt.getText()));
+        }else{
+            hidelbl.setVisible(false);
+        }
+
+    }
+
+    @FXML
+    void pwtyped(KeyEvent event) {
+        hidelbl.textProperty().bind(Bindings.concat(pwTxt.getText()));
     }
 
     private void validation() {
@@ -97,5 +125,10 @@ public class LogInFormController {
         usr = false;
         usr = Validation.txtValidation(userNameTxt, usrNameLine);
         pw = Validation.pwValidation(pwTxt, pwLine);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        hidelbl.setVisible(false);
     }
 }
