@@ -15,7 +15,11 @@ import lk.ijse.controllers.util.Validation;
 import lk.ijse.dto.RoomDTO;
 import lk.ijse.dto.tm.RoomTM;
 
+import java.util.List;
+
 public class RoomFormController {
+    @FXML
+    private ComboBox<String> typCmb;
     @FXML
     private Button addBtn1;
 
@@ -83,6 +87,7 @@ public class RoomFormController {
         initUi();
         setCellValueFactory();
         fillTable();
+        setType();
     }
 
     private void fillTable() {
@@ -107,21 +112,27 @@ public class RoomFormController {
 
     private void initUi() {
         roomIdTxt.clear();
-        roomTypeTxt.clear();
         qtyTxt.clear();
         keyMoneyTxt.clear();
+        typCmb.setValue(null);
 
         roomIdTxt.setDisable(true);
-        roomTypeTxt.setDisable(true);
         qtyTxt.setDisable(true);
         keyMoneyTxt.setDisable(true);
+        typCmb.setDisable(true);
 
         svBtn.setDisable(true);
         upBtn.setDisable(true);
         deleteBtn.setDisable(true);
         searchTxt.requestFocus();
     }
-
+    private void setType() {
+        typCmb.getItems().setAll("Non-AC", "Non-AC / Food","AC","AC / Food");
+    }
+    @FXML
+    void typCmbOnAction(ActionEvent event) {
+        qtyTxt.requestFocus();
+    }
     @FXML
     void qtyTxtOnAction(ActionEvent event) {
         keyMoneyTxt.requestFocus();
@@ -130,11 +141,6 @@ public class RoomFormController {
     @FXML
     void roomIdTxtOnAction(ActionEvent event) {
         roomTypeTxt.requestFocus();
-    }
-
-    @FXML
-    void roomTypeOnAction(ActionEvent event) {
-        qtyTxt.requestFocus();
     }
 
     @FXML
@@ -154,9 +160,11 @@ public class RoomFormController {
             roomTypeTxt.setDisable(false);
             qtyTxt.setDisable(false);
             keyMoneyTxt.setDisable(false);
+            typCmb.setDisable(false);
 
             roomIdTxt.setText(roomDTO.getId());
             roomTypeTxt.setText(roomDTO.getType());
+            typCmb.getSelectionModel().select(getCmbIndex(typCmb, roomDTO.getType()));
             qtyTxt.setText(String.valueOf(roomDTO.getQty()));
             keyMoneyTxt.setText(roomDTO.getKeyMoney());
         } else {
@@ -164,11 +172,20 @@ public class RoomFormController {
         }
         searchTxt.clear();
     }
+    int getCmbIndex(ComboBox<String> cmb, String value) {
+        List<String> cmbList = cmb.getItems();
+        for (int i = 0; i < cmbList.size(); i++) {
+            if (cmbList.get(i).equals(value)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     @FXML
     void svBtnOnAction(ActionEvent event) {
         if (validation()) {
-            if (roomBO.saveRoom(new RoomDTO(roomIdTxt.getText(), roomTypeTxt.getText(), Integer.parseInt(qtyTxt.getText()), keyMoneyTxt.getText()))) {
+            if (roomBO.saveRoom(new RoomDTO(roomIdTxt.getText(), typCmb.getValue(), Integer.parseInt(qtyTxt.getText()), keyMoneyTxt.getText()))) {
                 new CustomAlert(Alert.AlertType.CONFIRMATION, "Update ", "Updated !", "Room Update successful !").show();
                 fillTable();
                 initUi();
@@ -181,7 +198,7 @@ public class RoomFormController {
     @FXML
     void upBtnOnAction(ActionEvent event) {
         if (validation()) {
-            if (roomBO.updateRoom(new RoomDTO(roomIdTxt.getText(), roomTypeTxt.getText(), Integer.parseInt(qtyTxt.getText()), keyMoneyTxt.getText()))) {
+            if (roomBO.updateRoom(new RoomDTO(roomIdTxt.getText(), typCmb.getValue(), Integer.parseInt(qtyTxt.getText()), keyMoneyTxt.getText()))) {
                 new CustomAlert(Alert.AlertType.CONFIRMATION, "Update ", "Updated !", "Student Update successful !").show();
                 fillTable();
                 initUi();
@@ -204,7 +221,7 @@ public class RoomFormController {
 
     @FXML
     void addNewBtnOnAction(ActionEvent event) {
-        roomTypeTxt.setDisable(false);
+        typCmb.setDisable(false);
         qtyTxt.setDisable(false);
         keyMoneyTxt.setDisable(false);
         svBtn.setDisable(false);
@@ -221,7 +238,7 @@ public class RoomFormController {
         qty = false;
         keyMoney = false;
         id = Validation.txtValidation(roomIdTxt, idLine);
-        type = Validation.txtValidation(roomTypeTxt, roomTypeLine);
+        type = Validation.comboValidation(typCmb);
         qty = Validation.txtValidation(qtyTxt, qtyLine);
         keyMoney = Validation.txtValidation(keyMoneyTxt, kyMoneyLine);
         qty = Validation.numberValidation(qtyTxt, qtyLine);
@@ -231,4 +248,5 @@ public class RoomFormController {
         }
         return false;
     }
+
 }

@@ -60,6 +60,9 @@ public class SettingsFormController {
     }
 
     private void initUi() {
+        oldPwTxt.clear();
+        newPwTxt.clear();
+        reEntrPw.clear();
         reEntrPw.setDisable(true);
         newPwTxt.setDisable(true);
         svBtn.setDisable(true);
@@ -67,8 +70,9 @@ public class SettingsFormController {
 
     @FXML
     void checkBtnOnActon(ActionEvent event) {
+        UserDTO userDTO=userBo.getUser(new UserDTO(LogInFormController.Gl0bUsrName,oldPwTxt.getText()));
         if (!oldPwTxt.getText().equals("")){
-            if (userBo.getUser(new UserDTO(LogInFormController.Gl0bUsrName,oldPwTxt.getText()))){
+            if (userDTO.getPassword().equals(oldPwTxt.getText())){
                 reEntrPw.setDisable(false);
                 svBtn.setDisable(false);
                 newPwTxt.setDisable(false);
@@ -102,12 +106,16 @@ public class SettingsFormController {
 
     @FXML
     void svBtnOAction(ActionEvent event) {
-        if(Validation.pwValidation(reEntrPw,pwLine) && Validation.pwValidation(newPwTxt,newPwLine)){
-            if (userBo.uptdUsr(new UserDTO(LogInFormController.Gl0bUsrName,newPwTxt.getText()))){
-                new CustomAlert(Alert.AlertType.CONFIRMATION,"Save ","Saved !","Save successful !").show();
-                initUi();
+        if(Validation.pwValidation(reEntrPw,newPwLine) & Validation.pwValidation(newPwTxt,pwLine)){
+            if (newPwTxt.getText().equals(reEntrPw.getText())){
+                if (userBo.uptdUsr(new UserDTO(LogInFormController.Gl0bUsrName,newPwTxt.getText()))){
+                    new CustomAlert(Alert.AlertType.CONFIRMATION,"Save ","Saved !","Save successful !").show();
+                    initUi();
+                }else {
+                    new CustomAlert(Alert.AlertType.ERROR,"Save ","Not Saved !","Save not successful !").show();
+                }
             }else {
-                new CustomAlert(Alert.AlertType.ERROR,"Save ","Not Saved !","Save not successful !").show();
+                Validation.shakeLine(newPwLine);
             }
         }
     }

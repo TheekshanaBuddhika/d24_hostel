@@ -28,5 +28,3 @@ public class Reservation {
             referencedColumnName = "room_id")
     private Room room;
 }
-
-

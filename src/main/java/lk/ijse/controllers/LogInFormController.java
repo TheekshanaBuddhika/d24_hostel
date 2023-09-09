@@ -49,14 +49,22 @@ public class LogInFormController {
     void loginBtnOnAction(ActionEvent event) {
         validation();
         if (usr && pw ){
-            boolean isUser=userBo.getUser(new UserDTO(userNameTxt.getText(),pwTxt.getText()));
-            if (isUser){
+            UserDTO isUser=userBo.getUser(new UserDTO(userNameTxt.getText(),pwTxt.getText()));
+            if (isUser!=null){
                 Gl0bUsrName=userNameTxt.getText();
-                try {
-                    Navigation.navigation(Rout.DASH_BOARD,root);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+
+                if (pwTxt.getText().equals(isUser.getPassword())){
+                    try {
+                        Navigation.navigation(Rout.DASH_BOARD,root);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }else {
+                    Validation.shakeLine(pwLine);
                 }
+            }else {
+                Validation.shakeLine(usrNameLine);
+                Validation.shakeLine(pwLine);
             }
         }
     }
@@ -68,7 +76,6 @@ public class LogInFormController {
 
     @FXML
     void pwViewBtnOnAction(ActionEvent event) {
-
     }
 
     @FXML
