@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import lk.ijse.configaration.SessionFactoryConfig;
 import lk.ijse.dao.custom.RoomDAO;
 import lk.ijse.entity.Room;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,19 +14,27 @@ import java.io.Serializable;
 import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
+
+    Session session = SessionFactoryConfig.getInstance().getSession();
+
     @Override
     public boolean save(Room dto) {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try{
             Transaction transaction = session.beginTransaction();
             Serializable save = session.save(dto);
             transaction.commit();
             return save != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            session.close();
         }
     }
 
     @Override
     public boolean update(Room dto) {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try {
             Transaction transaction = session.beginTransaction();
             session.update(dto);
             transaction.commit();
@@ -33,12 +42,14 @@ public class RoomDAOImpl implements RoomDAO {
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             return false;
+        }finally {
+            session.close();
         }
     }
 
     @Override
     public boolean delete(String id) {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try {
             Transaction transaction = session.beginTransaction();
             Room room = session.get(Room.class, id);
             session.delete(room);
@@ -46,12 +57,14 @@ public class RoomDAOImpl implements RoomDAO {
             return true;
         }catch (Exception exception){
             return false;
+        }finally {
+            session.close();
         }
     }
 
     @Override
     public List<Room> getAll() {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try {
             Transaction transaction = session.beginTransaction();
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
             CriteriaQuery<Room> query = criteriaBuilder.createQuery(Room.class);
@@ -59,22 +72,32 @@ public class RoomDAOImpl implements RoomDAO {
             List<Room> resultList = session.createQuery(query).getResultList();
             transaction.commit();
             return resultList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            session.close();
         }
     }
 
     @Override
     public Room getItem(String id) {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try {
             Transaction transaction = session.beginTransaction();
             Room room = session.get(Room.class, id);
             transaction.commit();
             return room;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            session.close();
         }
     }
 
     @Override
     public String getNextId() {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try {
             String newId = "RM000";
             Transaction transaction = session.beginTransaction();
             List list = session.createNativeQuery("select room_id from room order by room_id desc limit 1").list();
@@ -82,6 +105,9 @@ public class RoomDAOImpl implements RoomDAO {
             transaction.commit();
             session.close();
             return newId;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

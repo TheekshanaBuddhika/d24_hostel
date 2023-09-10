@@ -11,19 +11,28 @@ import java.io.Serializable;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
+
+    Session session = SessionFactoryConfig.getInstance().getSession();
+
     @Override
     public boolean save(User dto) {
-        Session session = SessionFactoryConfig.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        Serializable save = session.save(dto);
-        transaction.commit();
-        session.close();
-        return save != null;
+
+        try {
+            Transaction transaction = session.beginTransaction();
+            Serializable save = session.save(dto);
+            transaction.commit();
+            return save != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            session.close();
+        }
     }
 
     @Override
     public boolean update(User dto) {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try {
             Transaction transaction = session.beginTransaction();
             session.update(dto);
             transaction.commit();
@@ -31,6 +40,8 @@ public class UserDAOImpl implements UserDAO {
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             return false;
+        }finally {
+            session.close();
         }
     }
 
@@ -46,11 +57,16 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getItem(String id) {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try{
             Transaction transaction = session.beginTransaction();
             User user = session.get(User.class, id);
             transaction.commit();
             return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            session.close();
         }
 
     }
